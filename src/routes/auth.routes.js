@@ -1,5 +1,9 @@
-import {Router} from 'express'
+import { Router } from 'express'
+const router = Router()
+import * as authCtrl from '../controllers/auth.controller'
 
-const router = Router();
+router.post("/singup", authCtrl.singUp)
+
+router.post("/singin", authCtrl.singIn)
 
 export default router

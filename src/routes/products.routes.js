@@ -1,50 +1,22 @@
-import {Router} from 'express'
-import * as productsController from '../controllers/products.controller'
+import { Router } from 'express'
+import {createProduct, getProducts, getProductsById, updateProductById, deleteProductById} from '../controllers/products.controller'
+// import * as productCtrl from  '../controllers/products.controller' 
+//  productCtrl.function
+import app from '../app'
 
-const router = Router();
-
-router.get('/', productsController.getProducts)
-
-router.get('/user', productsController.getUsers)
-
-router.get('/comments', productsController.getComments)
+const router = Router()
 
 
+router.get('/', getProducts)
 
-router.post('/', productsController.createProduct)
+router.post('/', createProduct)
 
-router.post('/comment', productsController.createComment)
+router.get('/:id', getProductsById)
 
-router.post('/user', productsController.createUser)
+router.put('/:id', updateProductById)
 
+router.delete('/:id', deleteProductById)
 
-// router.get('/:productId', productsController.getProductById)
-
-
-router.delete('/comment/:id', productsController.deleteComment)
-
-router.put('/price/:id', productsController.updatePrice)
-
-router.put('/:id', productsController.updateComment)
-
-router.put('/stock/:id', productsController.updateStock)
-
-router.put('/add-to-cart/:id',productsController.addToCart)
-
-router.get('/cart', productsController.getCart)
-
-router.delete('/cart/:id', productsController.deleteCart)
-
-router.delete('/cart-product/:id', productsController.removeFromCart)
-
-
-
-
-// router.delete('/delete', productsController.deleteProducts)
-
-
- 
-// "_id": "62ebdaca3e8510fb985bf6cc"  62ebdaf03e8510fb985bf6ce removeFromCart 62ebdaf03e8510fb985bf6ce
 
 
 
