@@ -7,6 +7,9 @@ import Role from '../models/Role';
 export const singUp = async (req, res) =>{
     const { username, email, password, roles } = req.body
     
+    if(!username || !email | !password){
+        res.status(404).json({message: "missing data"})
+    }
     // const userFound = User.find({email})
 
     const userCreate = new User({
@@ -36,6 +39,8 @@ export const singUp = async (req, res) =>{
 
 export const singIn = async (req, res) =>{
     const { email, password } = req.body
+
+    if(!email || !password) res.status(404).json({message: "miss email or password"})
 
     const userFound = await User.findOne({email}).populate("roles")
 
